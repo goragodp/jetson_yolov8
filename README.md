@@ -72,7 +72,32 @@ Technically, this command install several dependencies including PyTorch, NumPy,
 ```shell
  $ pip install ultralytics
 ```
+----------------
+### Example output
+- Pose Estimation Model
+```python
+from ultralytics import YOLO
+#load model
+model = YOLO("yolov8n-pose.pt") 
+results = model("test/pose/*", save=True) # specifiy path, in this case all image in test/pose folder
+print(f"found {len(results)} in specific folder")
 
+#result format depend on network type, this case we have box location and keypoint location in image
+print(f"first result {results}")
+```
+#### example results (runs/pose/predicts)
+| single person | group |
+|---------------|-------|
+|![ALT TEXT](runs/pose/predict/single.jpg)  |![ALT TEXT](runs/pose/predict/multiple.jpg) |
 
+- Segmentation Model
+```python
+from ultralytics import YOLO
 
-
+model = YOLO("yolov8n-seg.pt") 
+results = model("test/classification/*", save=True) # specifiy path, in thi
+print(f"found {len(results)} in specific folder")
+print(f"first result {results}")
+```
+#### example results (runs/segment/predicts)
+|![ALT TEXT](runs/segment/predict/parrots.jpg) 
